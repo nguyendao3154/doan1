@@ -1,0 +1,5 @@
+*.pbi
+*.dep
+*.xcl
+*.bat
+Project/Debug/
