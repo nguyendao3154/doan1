@@ -2159,10 +2159,16 @@
             <name>$PROJ_DIR$\..\Library\src\stm8s_adc1.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\Library\src\stm8s_clk.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\Library\src\stm8s_exti.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Library\src\stm8s_gpio.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Library\src\stm8s_tim2.c</name>
         </file>
     </group>
     <group>

@@ -1,40 +1,71 @@
+/******************************************************************************
+*
+* Truong Dai hoc Bach Khoa Ha Noi.
+* Vien Dien SEE.
+* ALL RIGHTS RESERVED.
+*
+***************************************************************************/
 /**
-  ******************************************************************************
-  * @file    Project/main.c 
-  * @author  MCD Application Team
-  * @version V2.3.0
-  * @date    16-June-2017
-  * @brief   Main program body
-   ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */ 
-
-
+ *
+ * @file      main.c
+ *
+ * @author    Nguyen Dao
+ * 
+ * @version   1.0
+ * 
+ * @date      May-23-2020
+ * 
+ * @brief     Brief description of the file
+ *
+ * Detailed Description of the file. If not used, remove the separator above.
+ *
+ */
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s.h"
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
 
 /* Private defines -----------------------------------------------------------*/
+#define LED_PORT GPIOD
+#define LED_PIN GPIO_PIN_4
+
+#define BUZZER_PORT GPIOD
+#define BUZZER_PIN GPIO_PIN_5
+
+#define BUZZER_TIMEOUT 10
+#define LED_TIMEOUT 5
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
+void Clock_Init(void)
+{
+  CLK_DeInit();
+  CLK_SYSCLKConfig(CLK_PRESCALER_HSIDIV1);
+  CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO, CLK_SOURCE_HSI, DISABLE, CLK_CURRENTCLOCKSTATE_DISABLE);
+}
 
+void Timer_Init(void)
+{
+  GPIO_Init(GPIOD, GPIO_PIN_0, GPIO_MODE_OUT_PP_HIGH_FAST);
+  TIM2_TimeBaseInit(TIM2_PRESCALER_512, 3124);
+  TIM2_ClearFlag(TIM2_FLAG_UPDATE);
+  TIM2_ITConfig(TIM2_IT_UPDATE, ENABLE);
+  enableInterrupts();
+  TIM2_Cmd(ENABLE);
+}
+
+void GPIO_Config(void)
+{
+  GPIO_Init(BUZZER_PORT, BUZZER_PIN, GPIO_MODE_OUT_PP_HIGH_FAST);
+  GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_HIGH_FAST);
+  GPIO_WriteLow(BUZZER_PORT, BUZZER_PIN);
+  GPIO_WriteHigh(LED_PORT, LED_PIN);
+}
 void main(void)
 {
+  Clock_Init();
+  Timer_Init();
+  GPIO_Config();
   /* Infinite loop */
   while (1)
   {
