@@ -30,11 +30,13 @@
 #define LED_PORT GPIOD
 #define LED_PIN GPIO_PIN_4
 
-#define BUZZER_PORT GPIOD
+#define BUZZER_PORT (EXTI_PORT_GPIOD)
 #define BUZZER_PIN GPIO_PIN_5
 
 #define BUZZER_TIMEOUT 10
 #define LED_TIMEOUT 5
+
+bool tu_flag = false;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 void Clock_Init(void)
@@ -56,21 +58,36 @@ void Timer_Init(void)
 
 void GPIO_Config(void)
 {
-  GPIO_Init(BUZZER_PORT, BUZZER_PIN, GPIO_MODE_OUT_PP_HIGH_FAST);
   GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_HIGH_FAST);
-  GPIO_WriteLow(BUZZER_PORT, BUZZER_PIN);
   GPIO_WriteHigh(LED_PORT, LED_PIN);
+}
+
+void Interrupt_init(void)
+{
+  EXTI_SetExtIntSensitivity(BUZZER_PORT, EXTI_SENSITIVITY_FALL_ONLY);
+  EXTI_SetTLISensitivity(EXTI_TLISENSITIVITY_FALL_ONLY);
+
+  enableInterrupts();
+}
+void task_interrupt(void)
+{
+  if (tu_flag)
+  {
+    // do sth
+    tu_flag = false;
+  }
 }
 void main(void)
 {
   Clock_Init();
   Timer_Init();
   GPIO_Config();
+  Interrupt_init();
   /* Infinite loop */
   while (1)
   {
+    task_interrupt();
   }
-  
 }
 
 #ifdef USE_FULL_ASSERT
@@ -82,8 +99,8 @@ void main(void)
   * @param line: assert_param error line source number
   * @retval : None
   */
-void assert_failed(u8* file, u32 line)
-{ 
+void assert_failed(u8 *file, u32 line)
+{
   /* User can add his own implementation to report the file name and line number,
      ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
 
@@ -93,6 +110,5 @@ void assert_failed(u8* file, u32 line)
   }
 }
 #endif
-
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

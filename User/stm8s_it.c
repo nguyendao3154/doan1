@@ -29,7 +29,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s_it.h"
-extern uint16_t Conversion_Value;
+#include "stdbool.h"
+extern bool tu_flag;
 /** @addtogroup Template_Project
   * @{
   */
@@ -153,6 +154,7 @@ INTERRUPT_HANDLER(EXTI_PORTD_IRQHandler, 6)
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
+   tu_flag = true;
 }
 
 /**
