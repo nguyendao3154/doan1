@@ -2162,13 +2162,16 @@
             <name>$PROJ_DIR$\..\Library\src\stm8s_clk.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Library\src\stm8s_exti.c</name>
+            <name>$PROJ_DIR$\..\Library\src\stm8s_flash.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Library\src\stm8s_gpio.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Library\src\stm8s_tim2.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Library\src\stm8s_uart1.c</name>
         </file>
     </group>
     <group>
@@ -2181,9 +2184,6 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\User\stm8s_it.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\User\stm8s_it.h</name>
         </file>
     </group>
 </project>

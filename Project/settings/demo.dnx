@@ -49,7 +49,7 @@
         <MultiCoreRunAll>1</MultiCoreRunAll>
     </Simulator>
     <DebugChecksum>
-        <Checksum>2695551489</Checksum>
+        <Checksum>3455017963</Checksum>
     </DebugChecksum>
     <CallStack>
         <ShowArgs>0</ShowArgs>
@@ -57,6 +57,26 @@
     <Disassembly>
         <MixedMode>1</MixedMode>
     </Disassembly>
+    <array_types>
+        <Fmt0>uint8_t[5]	4	0</Fmt0>
+    </array_types>
+    <watch_formats>
+        <Fmt0>{W}42:countTim	3	0</Fmt0>
+        <Fmt1>{W}42:countTimLanh	3	0</Fmt1>
+        <Fmt2>{W}42:countTimNong	3	0</Fmt2>
+        <Fmt3>{W}42:do_lanh	3	0</Fmt3>
+        <Fmt4>{W}42:do_nong	3	0</Fmt4>
+        <Fmt5>{W}42:do_phong	3	0</Fmt5>
+        <Fmt6>{W}42:lanh_input	3	0</Fmt6>
+        <Fmt7>{W}42:nong_input	3	0</Fmt7>
+        <Fmt8>{W}42:phong_input	3	0</Fmt8>
+        <Fmt9>{W}42:rxBuffer[0]	4	0</Fmt9>
+        <Fmt10>{W}42:rxBuffer[1]	4	0</Fmt10>
+        <Fmt11>{W}42:rxBuffer[2]	4	0</Fmt11>
+        <Fmt12>{W}42:rxBuffer[4]	4	0</Fmt12>
+        <Fmt13>{W}42:rxBuffer[5]	4	0</Fmt13>
+        <Fmt14>{W}42:rxCounter	3	0</Fmt14>
+    </watch_formats>
     <DataSample>
         <LogEnabled>0</LogEnabled>
         <GraphEnabled>0</GraphEnabled>

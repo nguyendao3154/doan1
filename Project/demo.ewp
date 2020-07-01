@@ -16,7 +16,7 @@
                 <debug>1</debug>
                 <option>
                     <name>GenDeviceSelectMenu</name>
-                    <state>STM8S105C6	STM8S105C6</state>
+                    <state>STM8S003F3	STM8S003F3</state>
                 </option>
                 <option>
                     <name>GenCodeModel</name>
@@ -607,7 +607,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$TOOLKIT_DIR$\config\lnkstm8s105c6.icf</state>
+                    <state>$TOOLKIT_DIR$\config\lnkstm8s003f3.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -1645,13 +1645,16 @@
             <name>$PROJ_DIR$\..\Library\src\stm8s_clk.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Library\src\stm8s_exti.c</name>
+            <name>$PROJ_DIR$\..\Library\src\stm8s_flash.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Library\src\stm8s_gpio.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\Library\src\stm8s_tim2.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Library\src\stm8s_uart1.c</name>
         </file>
     </group>
     <group>
@@ -1664,9 +1667,6 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\User\stm8s_it.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\User\stm8s_it.h</name>
         </file>
     </group>
 </project>

@@ -29,8 +29,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s_it.h"
-#include "stdbool.h"
-extern bool tu_flag;
+#include <stdbool.h>
+extern uint16_t Conversion_Value;
+extern bool Tim2_Flag;
 /** @addtogroup Template_Project
   * @{
   */
@@ -154,7 +155,6 @@ INTERRUPT_HANDLER(EXTI_PORTD_IRQHandler, 6)
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-   tu_flag = true;
 }
 
 /**
@@ -278,6 +278,10 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
   */
  INTERRUPT_HANDLER(TIM2_UPD_OVF_BRK_IRQHandler, 13)
  {
+   if(TIM2_GetITStatus(TIM2_IT_UPDATE)){
+    Tim2_Flag = true;
+    TIM2_ClearITPendingBit(TIM2_IT_UPDATE);
+   }
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
